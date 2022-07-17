@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "nobob": {
+      "name": "NoBob",
+      "enabled": {
+        "name": "Enabled"
+      }
+    }
+  },
+  "nobob": {
+    "messages": {
+      "activateBobbing": {
+        "important": "IMPORTANT: ",
+        "description": "In order for NoBob to work, the following setting has to be enabled: ",
+        "setting": "Options -> Video Settings -> View Bobbing ",
+        "click": "[CLICK]"
+      },
+      "activated": "Successfully enabled bobbing. NoBob will now work like expected."
+    }
+  }
+}
