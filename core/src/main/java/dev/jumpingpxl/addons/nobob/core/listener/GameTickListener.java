@@ -31,7 +31,6 @@ public class GameTickListener {
     }
 
     this.previousTickBobbing = currentTickBobbing;
-
     ClientPlayer clientPlayer = minecraft.getClientPlayer();
     if (Objects.nonNull(clientPlayer)) {
       clientPlayer.setDistanceWalked(0.0F);
