@@ -28,7 +28,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("net.labymod.gradle", "addon", "0.2.31")
+        classpath("net.labymod.gradle", "addon", "0.2.35")
     }
 }
 
@@ -56,18 +56,6 @@ subprojects {
     tasks.compileJava {
         options.encoding = "UTF-8"
     }
-}
-
-createReleaseJar {
-    // Exclude a project from the release jar generation process
-    exclude(project(":versions"))
-
-    // You can also exclude version implementation if your addon
-    // does not require version implementation
-    //
-    // exclude(project(":v1_8"))
-    // exclude(project(":v1_17"))
-    // exclude(project(":v1_18"))
 }
 
 addon {

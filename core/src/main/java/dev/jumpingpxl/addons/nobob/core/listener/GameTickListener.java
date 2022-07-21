@@ -24,15 +24,15 @@ public class GameTickListener {
       return;
     }
 
-    Minecraft minecraft = this.addon.labyAPI().getMinecraft();
-    boolean currentTickBobbing = minecraft.getOptions().isBobbing();
+    Minecraft minecraft = this.addon.labyAPI().minecraft();
+    boolean currentTickBobbing = minecraft.options().isBobbing();
     if (this.previousTickBobbing && !currentTickBobbing) {
       this.addon.sendNotification();
     }
 
     this.previousTickBobbing = currentTickBobbing;
 
-    ClientPlayer clientPlayer = minecraft.getClientPlayer();
+    ClientPlayer clientPlayer = minecraft.clientPlayer();
     if (Objects.nonNull(clientPlayer)) {
       clientPlayer.setDistanceWalked(0.0F);
     }

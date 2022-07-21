@@ -19,7 +19,7 @@ public class ToggleMinecraftBobbingCommand extends Command {
 
   @Override
   public boolean execute(String prefix, String[] arguments) {
-    MinecraftOptions options = this.addon.labyAPI().getMinecraft().getOptions();
+    MinecraftOptions options = this.addon.labyAPI().minecraft().options();
     if (options.isBobbing()) {
       return true;
     }
