@@ -42,7 +42,7 @@ public class NoBob extends LabyAddon<NoBobConfiguration> {
 
   public void sendNotification() {
     ClientPlayer clientPlayer = this.labyAPI().minecraft().clientPlayer();
-    if (Objects.isNull(clientPlayer) || !this.configuration().isEnabled() || this.labyAPI()
+    if (Objects.isNull(clientPlayer) || !this.configuration().enabled().get() || this.labyAPI()
         .minecraft().options().isBobbing()) {
       return;
     }

@@ -1,13 +1,11 @@
 {
-  "settings": {
-    "nobob": {
+  "nobob": {
+    "settings": {
       "name": "NoBob",
       "enabled": {
         "name": "Enabled"
       }
-    }
-  },
-  "nobob": {
+    },
     "messages": {
       "activateBobbing": {
         "important": "IMPORTANT: ",

@@ -20,7 +20,7 @@ public class GameTickListener {
 
   @Subscribe
   public void onGameTick(GameTickEvent event) {
-    if (!this.addon.configuration().isEnabled()) {
+    if (!this.addon.configuration().enabled().get()) {
       return;
     }
 
