@@ -28,7 +28,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("net.labymod.gradle", "addon", "0.2.35")
+        classpath("net.labymod.gradle", "addon", "0.2.43")
     }
 }
 
@@ -65,11 +65,6 @@ addon {
         author("JumpingPxl")
         description("Adds the option for a more decent bobbing animation.")
         version(System.getenv().getOrDefault("VERSION", "1.0.0"))
-    }
-
-    dev {
-        releaseChannel = "improvement-addon-api"
-        commitReference = "unknown"
     }
 
     internalRelease()
