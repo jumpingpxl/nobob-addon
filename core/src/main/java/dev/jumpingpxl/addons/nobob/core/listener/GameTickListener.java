@@ -1,8 +1,7 @@
 package dev.jumpingpxl.addons.nobob.core.listener;
 
-import com.google.inject.Inject;
 import dev.jumpingpxl.addons.nobob.core.NoBob;
-import java.util.Objects;
+import javax.inject.Inject;
 import net.labymod.api.client.Minecraft;
 import net.labymod.api.client.entity.player.ClientPlayer;
 import net.labymod.api.event.Subscribe;
@@ -16,14 +15,11 @@ public class GameTickListener {
   @Inject
   private GameTickListener(NoBob addon) {
     this.addon = addon;
+    this.previousTickBobbing = true;
   }
 
   @Subscribe
   public void onGameTick(GameTickEvent event) {
-    if (!this.addon.configuration().enabled().get()) {
-      return;
-    }
-
     Minecraft minecraft = this.addon.labyAPI().minecraft();
     boolean currentTickBobbing = minecraft.options().isBobbing();
     if (this.previousTickBobbing && !currentTickBobbing) {
@@ -31,9 +27,8 @@ public class GameTickListener {
     }
 
     this.previousTickBobbing = currentTickBobbing;
-
     ClientPlayer clientPlayer = minecraft.clientPlayer();
-    if (Objects.nonNull(clientPlayer)) {
+    if (clientPlayer != null) {
       clientPlayer.setDistanceWalked(0.0F);
     }
   }

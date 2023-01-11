@@ -5,12 +5,11 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.Switc
 import net.labymod.api.configuration.loader.annotation.ConfigName;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 
-@SuppressWarnings("FieldMayBeFinal")
 @ConfigName("settings")
 public class NoBobConfiguration extends AddonConfig {
 
   @SwitchSetting
-  private ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
+  private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
   @Override
   public ConfigProperty<Boolean> enabled() {

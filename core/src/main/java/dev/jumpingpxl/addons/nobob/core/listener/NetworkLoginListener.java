@@ -1,7 +1,7 @@
 package dev.jumpingpxl.addons.nobob.core.listener;
 
-import com.google.inject.Inject;
 import dev.jumpingpxl.addons.nobob.core.NoBob;
+import javax.inject.Inject;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.network.server.NetworkLoginEvent;
 

@@ -1,10 +1,9 @@
 package dev.jumpingpxl.addons.nobob.core.commands;
 
-import com.google.inject.Inject;
 import dev.jumpingpxl.addons.nobob.core.NoBob;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
+import javax.inject.Inject;
 import net.labymod.api.client.chat.command.Command;
+import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.options.MinecraftOptions;
 
 public class ToggleMinecraftBobbingCommand extends Command {
@@ -25,9 +24,7 @@ public class ToggleMinecraftBobbingCommand extends Command {
     }
 
     options.setBobbing(true);
-    Component component = Component.empty().append(this.addon.prefix())
-        .append(Component.translatable("nobob.messages.activated", NamedTextColor.GREEN));
-    this.displayMessage(component);
+    this.displayTranslatable("nobob.messages.activated", NamedTextColor.GREEN);
     return true;
   }
 }
