@@ -1,7 +1,6 @@
 package dev.jumpingpxl.addons.nobob.core.listener;
 
 import dev.jumpingpxl.addons.nobob.core.NoBob;
-import javax.inject.Inject;
 import net.labymod.api.client.Minecraft;
 import net.labymod.api.client.entity.player.ClientPlayer;
 import net.labymod.api.event.Subscribe;
@@ -12,8 +11,7 @@ public class GameTickListener {
   private final NoBob addon;
   private boolean previousTickBobbing;
 
-  @Inject
-  private GameTickListener(NoBob addon) {
+  public GameTickListener(NoBob addon) {
     this.addon = addon;
     this.previousTickBobbing = true;
   }

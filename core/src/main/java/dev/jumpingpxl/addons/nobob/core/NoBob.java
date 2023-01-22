@@ -3,17 +3,16 @@ package dev.jumpingpxl.addons.nobob.core;
 import dev.jumpingpxl.addons.nobob.core.commands.ToggleMinecraftBobbingCommand;
 import dev.jumpingpxl.addons.nobob.core.listener.GameTickListener;
 import dev.jumpingpxl.addons.nobob.core.listener.NetworkLoginListener;
-import javax.inject.Singleton;
 import net.labymod.api.addon.LabyAddon;
+import net.labymod.api.client.Minecraft;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.event.ClickEvent;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.TextDecoration;
 import net.labymod.api.client.entity.player.ClientPlayer;
-import net.labymod.api.models.addon.annotation.AddonListener;
+import net.labymod.api.models.addon.annotation.AddonMain;
 
-@Singleton
-@AddonListener
+@AddonMain
 public class NoBob extends LabyAddon<NoBobConfiguration> {
 
   private static final Component PREFIX = Component.text("[", NamedTextColor.GRAY)
@@ -24,10 +23,10 @@ public class NoBob extends LabyAddon<NoBobConfiguration> {
   protected void enable() {
     this.registerSettingCategory();
 
-    this.registerCommand(ToggleMinecraftBobbingCommand.class).messagePrefix(PREFIX);
+    this.registerCommand(new ToggleMinecraftBobbingCommand(this).messagePrefix(PREFIX));
 
-    this.registerListener(GameTickListener.class);
-    this.registerListener(NetworkLoginListener.class);
+    this.registerListener(new GameTickListener(this));
+    this.registerListener(new NetworkLoginListener(this));
   }
 
   @Override
@@ -36,9 +35,10 @@ public class NoBob extends LabyAddon<NoBobConfiguration> {
   }
 
   public void sendNotification() {
-    ClientPlayer clientPlayer = this.labyAPI().minecraft().clientPlayer();
-    if (clientPlayer == null || !this.configuration().enabled().get() || this.labyAPI()
-        .minecraft().options().isBobbing()) {
+    Minecraft minecraft = this.labyAPI().minecraft();
+    ClientPlayer clientPlayer = minecraft.clientPlayer();
+    if (clientPlayer == null || !this.configuration().enabled().get() || minecraft.options()
+        .isBobbing()) {
       return;
     }
 
