@@ -1,27 +1,8 @@
-buildscript {
-    repositories {
-        maven("https://dist.labymod.net/api/v1/maven/release/") {
-            name = "LabyMod Distributor"
-        }
-
-        maven("https://repo.spongepowered.org/repository/maven-public") {
-            name = "SpongePowered Repository"
-        }
-        mavenLocal()
-    }
-
-    dependencies {
-        classpath("net.labymod.gradle", "addon", "0.3.0-pre7")
-    }
-}
-
 plugins {
     id("java-library")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
+    id("net.labymod.gradle")
+    id("net.labymod.gradle.addon")
 }
-
-plugins.apply("net.labymod.gradle")
-plugins.apply("net.labymod.gradle.addon")
 
 group = "org.example"
 version = "1.0.0"
@@ -51,8 +32,7 @@ labyMod {
     }
 
     addonDev {
-        localRelease()
-        //snapshotRelease()
+        internalRelease()
     }
 }
 
@@ -74,6 +54,7 @@ fun configureRun(provider: net.labymod.gradle.core.minecraft.provider.VersionPro
         jvmArgs("-Dnet.labymod.running-version=${gameVersion}")
         jvmArgs("-Dmixin.debug=true")
         jvmArgs("-Dnet.labymod.debugging.all=true")
+        jvmArgs("-Dmixin.env.disableRefMap=true")
 
         if (org.gradle.internal.os.OperatingSystem.current() == org.gradle.internal.os.OperatingSystem.MAC_OS) {
             jvmArgs("-XstartOnFirstThread")
